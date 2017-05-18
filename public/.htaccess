@@ -1,0 +1,25 @@
+RewriteEngine On
+    RedirectMatch permanent /lingshizx?([^/]$) /lingshizx/
+    RedirectMatch permanent /lingshizx/page/([0-9]+)?([^/]$) /lingshizx/page/$1$2/
+    RedirectMatch permanent /lingshidianpp?([^/]$) /lingshidianpp/
+    RedirectMatch permanent /lingshidianpp/page/([0-9]+)?([^/]$) /lingshidianpp/page/$1$2/
+    RedirectMatch permanent /chaohuodian?([^/]$) /chaohuodian/
+    RedirectMatch permanent /chaohuodian/page/([0-9]+)?([^/]$) /chaohuodian/page/$1$2/
+    RedirectMatch permanent /ganguodian?([^/]$) /ganguodian/
+    RedirectMatch permanent /ganguodian/page/([0-9]+)?([^/]$) /ganguodian/page/$1$2/
+    RedirectMatch permanent /jinkoulingshi?([^/]$) /jinkoulingshi/
+    RedirectMatch permanent /jinkoulingshi/page/([0-9]+)?([^/]$) /jinkoulingshi/page/$1$2/
+    RedirectMatch permanent /ask?([^/]$) /ask/
+    RedirectMatch permanent /ask/page/([0-9]+)?([^/]$) /ask/page/$1$2/
+    RedirectMatch permanent /jinhuopf?([^/]$) /jinhuopf/
+    RedirectMatch permanent /jinhuopf/page/([0-9]+)?([^/]$) /jinhuopf/page/$1$2/
+    RedirectMatch permanent /zhanhui?([^/]$) /zhanhui/
+    RedirectMatch permanent /zhanhui/page/([0-9]+)?([^/]$) /zhanhui/page/$1$2/
+    RedirectMatch permanent /shushidian?([^/]$) /shushidian/
+    RedirectMatch permanent /shushidian/page/([0-9]+)?([^/]$) /shushidian/page/$1$2/
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
