@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Addonarticle extends Model
 {
     //,
-    protected $fillable=['body','brandname','typeid','brandtime','brandorigin','brandnum','brandpay','brandarea','brandmap','brandperson','brandattch','brandapply','brandchat','brandgroup','brandgroup','brandaddr','brandduty','imagepics','jmxq_content','jmys_content','jmlc_content','jmzc_content','jmask_content','acreage','genre','decorationpay','quartersrent','equipmentcost','workingcapital','laborquarter','miscellaneous','dailyvolume','unitprice','watercoal','licenseno','bdxg_search','registeredcapital'];
+    protected $fillable=['body','brandname','typeid','brandtime','brandorigin','brandnum','brandpay','brandarea','brandmap','brandperson','brandattch','brandapply','brandchat','brandgroup','brandgroup','brandaddr','brandduty','imagepics','jmxq_content','jmys_content','jmlc_content','jmzc_content','jmask_content','acreage','genre','decorationpay','quartersrent','equipmentcost','workingcapital','laborquarter','miscellaneous','dailyvolume','unitprice','watercoal','licenseno','bdxg_search','registeredcapital','tzfx_content','kdzc_content','jmqj_content'];
     public function archive(){
         return $this->belongsTo('App\AdminModel\Archive', 'id');
     }

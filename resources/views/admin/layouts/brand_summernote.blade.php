@@ -229,6 +229,306 @@
         </div>
     </div>
 </li>
+
+{{--newadd--}}
+<li>
+    <i class="fa fa-tags bg-maroon"></i>
+
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> {{date('H:m:s')}}</span>
+
+        <h3 class="timeline-header"><a href="#">投资分析</a> 内容编辑</h3>
+        <div class="form-group col-md-10" style="margin: 5px;">
+            {{Form::label('tzfxtitle', '投资分析标题', array('class' => 'control-label col-md-2 col-sm-3 col-xs-12','style'=>'padding-top:5px;'))}}
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                {{Form::text('tzfxtitle', null, array('class' => 'form-control col-md-10','id'=>'tzfxtitle','placeholder'=>'投资分析标题'))}}
+            </div>
+        </div>
+        <div class="timeline-body">
+            <div class="wrapper-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+
+                            <div class="ibox-content no-padding">
+
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container7',{
+                                        toolbars: [
+                                            ['bold', 'italic', 'underline', 'strikethrough', 'blockquote','forecolor','backcolor',
+                                                'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'unlink', 'insertimage',
+                                                'imageleft',
+                                                'imageright',
+                                                'imagecenter',
+                                                'superscript',
+                                                'subscript',
+                                                'autotypeset',
+                                                'lineheight',
+                                                'pasteplain',
+                                                'selectall',
+                                                'removeformat',
+                                                'formatmatch',
+                                                'cleardoc',
+                                                'rowspacingtop',
+                                                'rowspacingbottom',
+                                                'customstyle',
+                                                'paragraph',
+                                                'fontfamily',
+                                                'fontsize',
+                                                'directionalityltr',
+                                                'directionalityrtl',
+                                                'indent',
+                                                'touppercase', //字母大写
+                                                'tolowercase', //字母小写
+                                                'anchor', //锚点
+                                                'insertvideo','music',
+                                                'insertcode', //代码语言
+                                                'template', //模板
+                                                'horizontal', //分隔线
+                                                'time', //时间
+                                                'date', //日期
+                                                'spechars', //特殊字符
+                                                'inserttable',
+                                                'deletetable', //删除表格
+                                                'insertparagraphbeforetable', //"表格前插入行"
+                                                'insertrow', //前插入行
+                                                'deleterow', //删除行
+                                                'insertcol', //前插入列
+                                                'deletecol', //删除列
+                                                'mergecells', //合并多个单元格
+                                                'mergeright', //右合并单元格
+                                                'mergedown', //下合并单元格
+                                                'splittocells', //完全拆分单元格
+                                                'splittorows', //拆分成行
+                                                'splittocols', //拆分成列
+                                                'charts', // 图表
+                                                'source', //源代码
+                                                'emotion', 'fullscreen']
+                                        ],
+                                        elementPathEnabled: false,
+                                        enableContextMenu: true,
+                                        autoClearEmptyNode:true,
+                                        wordCount:false,
+                                        imagePopup:false,
+                                        autotypeset:{ indent: true,imageBlockLine: 'center' }
+                                    });
+                                    ue.ready(function() {
+                                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                                    });
+                                </script>
+                                <script id="container7" name="tzfx_content" type="text/plain" style="height:300px" >
+                                    @if(isset($articleinfos->tzfx_content))
+                                        {!! $articleinfos->tzfx_content !!}
+                                    @endif
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li>
+    <i class="fa fa-tags bg-maroon"></i>
+
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> {{date('H:m:s')}}</span>
+
+        <h3 class="timeline-header"><a href="#">开店支持</a> 内容编辑</h3>
+        <div class="form-group col-md-10" style="margin: 5px;">
+            {{Form::label('kdzctitle', '开店支持标题', array('class' => 'control-label col-md-2 col-sm-3 col-xs-12','style'=>'padding-top:5px;'))}}
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                {{Form::text('kdzctitle', null, array('class' => 'form-control col-md-10','id'=>'kdzctitle','placeholder'=>'开店支持标题'))}}
+            </div>
+        </div>
+        <div class="timeline-body">
+            <div class="wrapper-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+
+                            <div class="ibox-content no-padding">
+
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container8',{
+                                        toolbars: [
+                                            ['bold', 'italic', 'underline', 'strikethrough', 'blockquote','forecolor','backcolor',
+                                                'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'unlink', 'insertimage',
+                                                'imageleft',
+                                                'imageright',
+                                                'imagecenter',
+                                                'superscript',
+                                                'subscript',
+                                                'autotypeset',
+                                                'lineheight',
+                                                'pasteplain',
+                                                'selectall',
+                                                'removeformat',
+                                                'formatmatch',
+                                                'cleardoc',
+                                                'rowspacingtop',
+                                                'rowspacingbottom',
+                                                'customstyle',
+                                                'paragraph',
+                                                'fontfamily',
+                                                'fontsize',
+                                                'directionalityltr',
+                                                'directionalityrtl',
+                                                'indent',
+                                                'touppercase', //字母大写
+                                                'tolowercase', //字母小写
+                                                'anchor', //锚点
+                                                'insertvideo','music',
+                                                'insertcode', //代码语言
+                                                'template', //模板
+                                                'horizontal', //分隔线
+                                                'time', //时间
+                                                'date', //日期
+                                                'spechars', //特殊字符
+                                                'inserttable',
+                                                'deletetable', //删除表格
+                                                'insertparagraphbeforetable', //"表格前插入行"
+                                                'insertrow', //前插入行
+                                                'deleterow', //删除行
+                                                'insertcol', //前插入列
+                                                'deletecol', //删除列
+                                                'mergecells', //合并多个单元格
+                                                'mergeright', //右合并单元格
+                                                'mergedown', //下合并单元格
+                                                'splittocells', //完全拆分单元格
+                                                'splittorows', //拆分成行
+                                                'splittocols', //拆分成列
+                                                'charts', // 图表
+                                                'source', //源代码
+                                                'emotion', 'fullscreen']
+                                        ],
+                                        elementPathEnabled: false,
+                                        enableContextMenu: true,
+                                        autoClearEmptyNode:true,
+                                        wordCount:false,
+                                        imagePopup:false,
+                                        autotypeset:{ indent: true,imageBlockLine: 'center' }
+                                    });
+                                    ue.ready(function() {
+                                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                                    });
+                                </script>
+                                <script id="container8" name="kdzc_content" type="text/plain" style="height:300px" >
+                                    @if(isset($articleinfos->kdzc_content))
+                                        {!! $articleinfos->kdzc_content !!}
+                                    @endif
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<li>
+    <i class="fa fa-tags bg-maroon"></i>
+
+    <div class="timeline-item">
+        <span class="time"><i class="fa fa-clock-o"></i> {{date('H:m:s')}}</span>
+
+        <h3 class="timeline-header"><a href="#">加盟前景</a> 内容编辑</h3>
+        <div class="form-group col-md-10" style="margin: 5px;">
+            {{Form::label('jmqjtitle', '加盟前景标题', array('class' => 'control-label col-md-2 col-sm-3 col-xs-12','style'=>'padding-top:5px;'))}}
+            <div class="col-md-8 col-sm-9 col-xs-12">
+                {{Form::text('jmqjtitle', null, array('class' => 'form-control col-md-10','id'=>'jmqjtitle','placeholder'=>'加盟前景标题'))}}
+            </div>
+        </div>
+        <div class="timeline-body">
+            <div class="wrapper-content">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+
+                            <div class="ibox-content no-padding">
+
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container9',{
+                                        toolbars: [
+                                            ['bold', 'italic', 'underline', 'strikethrough', 'blockquote','forecolor','backcolor',
+                                                'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'unlink', 'insertimage',
+                                                'imageleft',
+                                                'imageright',
+                                                'imagecenter',
+                                                'superscript',
+                                                'subscript',
+                                                'autotypeset',
+                                                'lineheight',
+                                                'pasteplain',
+                                                'selectall',
+                                                'removeformat',
+                                                'formatmatch',
+                                                'cleardoc',
+                                                'rowspacingtop',
+                                                'rowspacingbottom',
+                                                'customstyle',
+                                                'paragraph',
+                                                'fontfamily',
+                                                'fontsize',
+                                                'directionalityltr',
+                                                'directionalityrtl',
+                                                'indent',
+                                                'touppercase', //字母大写
+                                                'tolowercase', //字母小写
+                                                'anchor', //锚点
+                                                'insertvideo','music',
+                                                'insertcode', //代码语言
+                                                'template', //模板
+                                                'horizontal', //分隔线
+                                                'time', //时间
+                                                'date', //日期
+                                                'spechars', //特殊字符
+                                                'inserttable',
+                                                'deletetable', //删除表格
+                                                'insertparagraphbeforetable', //"表格前插入行"
+                                                'insertrow', //前插入行
+                                                'deleterow', //删除行
+                                                'insertcol', //前插入列
+                                                'deletecol', //删除列
+                                                'mergecells', //合并多个单元格
+                                                'mergeright', //右合并单元格
+                                                'mergedown', //下合并单元格
+                                                'splittocells', //完全拆分单元格
+                                                'splittorows', //拆分成行
+                                                'splittocols', //拆分成列
+                                                'charts', // 图表
+                                                'source', //源代码
+                                                'emotion', 'fullscreen']
+                                        ],
+                                        elementPathEnabled: false,
+                                        enableContextMenu: true,
+                                        autoClearEmptyNode:true,
+                                        wordCount:false,
+                                        imagePopup:false,
+                                        autotypeset:{ indent: true,imageBlockLine: 'center' }
+                                    });
+                                    ue.ready(function() {
+                                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                                    });
+                                </script>
+                                <script id="container9" name="jmqj_content" type="text/plain" style="height:300px" >
+                                    @if(isset($articleinfos->jmqj_content))
+                                        {!! $articleinfos->jmqj_content !!}
+                                    @endif
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+{{--newaddend--}}
 <li>
     <i class="fa fa-tags bg-maroon"></i>
 

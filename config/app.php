@@ -136,8 +136,8 @@ return [
     'indexname'=>'58零食网',
     'keywords'=>'零食加盟网,零食店加盟,零食品牌加盟',
     'description'=>'58零食网品牌信息服务平台,汇聚精选零食品牌商机,拥有海量零食店加盟项目,致力于服务广大有开零食店投资需求的创业人群,帮助创业者了解开店零食品牌的选择、进货批发及各类零食展会等信息',
-    'api'=>'http://data.zz.baidu.com/urls?site=www.58lingshi.com&token=QeSFIvl5RWRgU3BT',
-    'apioriginal'=>'http://data.zz.baidu.com/urls?site=www.58lingshi.com&token=QeSFIvl5RWRgU3BT&type=original',
+    'api'=>'',
+    'apioriginal'=>'',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

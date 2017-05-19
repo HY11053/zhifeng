@@ -131,40 +131,7 @@ Route::group(['domain' => 'm.58lingshi.com'], function () {
     Route::post('/phone/complate/list','Mobile\PhoneController@ComplateBrands');
 });
 Route::get('/','Frontend\IndexController@Index');
-Route::get('demo','Frontend\ComparisionController@demo');
-Route::get('dem2','Frontend\ComparisionController@demo2');
-Route::get('dem3','Frontend\ComparisionController@demo3');
-Route::get('xgsearch','Frontend\ComparisionController@xgsearch');
-Route::get('ask','Frontend\AskController@Index');
-Route::get('ask/page/{page}/','Frontend\AskController@Index')->name('asklists');
-Route::get('ask/pending/page/{page}/','Frontend\AskController@PendingAsks')->name('askpendiglists');
-Route::get('ask/hot/page/{page}/','Frontend\AskController@HotAsks')->name('askhotlists');
-Route::get('paihangbang','Frontend\BrandsController@Paihangbang');
-Route::get('paihangbang/page/{page}/','Frontend\BrandsController@Paihangbang')->name('paihangbanglists');
-Route::get('pinpai','Frontend\BrandsController@Pinpai');
-Route::get('pinpai/page/{page}/','Frontend\BrandsController@pinpai')->name('Pinpai');
 
-Route::get('ask/hot','Frontend\AskController@HotAsks');
-Route::get('ask/pending','Frontend\AskController@PendingAsks');
-Route::post('questions/add','Frontend\QuestionController@Add')->name('answeradd');
-Route::get('ask/{id}.shtml','Frontend\AskController@AskArticle');
-Route::put('answer/{id}','Frontend\AnswerController@AnswerCreate')->name('answercrtete');
-Route::get('comparision/{p1?}-{p2?}-{p3?}.shtml','Frontend\ComparisionController@Compare');
-Route::post('comments','Frontend\CommentController@PostComment');
-Route::post('commentreversion/{id}','Frontend\CommentReversionController@CommentReversion');
-Route::get('about','Frontend\StatementController@about');
-Route::get('law','Frontend\StatementController@law');
-//Route::get('map','Frontend\StatementController@map');
-Route::get('contact','Frontend\StatementController@contact');
-Route::post('project','Frontend\ProjectController@SearchAjax');
-Route::get('project/{p1?}-{p2?}-{p3?}-{p4?}.shtml','Frontend\ProjectController@Search');
-Route::get('log/{data?}','Frontend\LogController@LogView');
-Route::get('{path}','Frontend\BrandsController@BrandLists');
-Route::get('{path?}/page/{page}/','Frontend\BrandsController@BrandLists')->name('pagelists');
-Route::get('{path?}/{id}.shtml','Frontend\BrandArticleController@BrandArticle');
-Route::post('/phone/complate','Frontend\PhoneController@Complates');
-Route::post('/phone/complate/list','Frontend\PhoneController@ComplateBrands');
-Route::post('/phone/bottom','Frontend\PhoneController@PhoneBottom');
 
 
 

@@ -1,0 +1,1079 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>品牌</title>
+<link href="css/css.css" type="text/css" rel="stylesheet" />
+
+<!--<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+-->
+<script type="text/javascript" src="js/Chart.js"></script>
+
+<!--<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+-->
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+-->
+<script type="text/javascript" src="js/starScore.js"></script>
+<script type="text/javascript" src="js/nav.js"></script>
+<style>
+iframe {
+	overflow: hidden;
+	border: none
+}
+</style>
+<!--星星打分-->
+<script type="text/javascript">
+
+var degree = ['','很差','差','中','良','优','未评分'];
+
+//重新点评
+
+function addComment2(e,inid,opt,id){
+
+	$.ajax({
+
+		url:'/siteMessage/content',
+
+		type:'post',
+
+		data:'id='+id,
+
+		dataType:'json',
+
+		success:function(data){
+
+			if(data.status==1){
+
+				var list = $('#Addnewskill_119');
+
+				list.eq(0).html(data.talent+'(人才ID：'+data.talentId+')');
+
+				list.eq(1).html(data.job);
+
+				list.eq(2).html(data.ms);
+
+				
+
+				var arr = [data.total,data.expAuth,data.killAuth,data.followTime,data.formality,data.appReact];
+
+				var list2 = $('span.level','#Addnewskill_119');
+
+				$('input[name="InterviewCommentInfoSub[opt]"]').val(opt+1);
+
+				list2.each(function(i,v){
+
+						var a = '';
+
+						
+
+						if(i>0){
+
+							a = 'cjmark';
+
+							$(v).parents('li').find('input').val(arr[i]);
+
+						}
+
+						var str = '';
+
+						if(arr[i]==6){
+
+							for(var n=0;n<=4;n++){
+
+								str += '<i '+a+' class="level_hollow"></i>';
+
+							}
+
+							$(v).parents('li').find('input').prop('disabled',true)
+
+						}else{
+
+							$(v).parents('li').find('input').prop('checked',true)
+
+							for(var n=0;n<arr[i];n++){
+
+								str += '<i '+a+' class="level_solid"></i>';
+
+							}
+
+							for(var n=0;n<(5-arr[i]);n++){
+
+								str += '<i '+a+' class="level_hollow"></i>';
+
+							}
+
+						}
+
+						$(v).html(str);
+
+						$(v).next().html(degree[arr[i]]);
+
+					
+
+				})
+
+				
+
+				
+
+				create_show(119);
+
+			}else{
+
+				ui.error(data.msg,2000);
+
+			}
+
+		}
+
+	})	
+
+}
+
+//提交点评
+
+function addComment3(){
+
+	$.ajax({
+
+		url:'/siteMessage/commentinterview',
+
+		type:'post',
+
+		data:$('form[name="comment"]').serialize(),
+
+		dataType:'json',
+
+		success:function(data){
+
+
+
+		}
+
+
+
+	})
+
+}
+
+
+
+$(function(){
+
+	//点星星
+
+	$(document).on('mouseover','i[cjmark]',function(){
+
+		var num = $(this).index();
+
+		var pmark = $(this).parents('.revinp');
+
+		var mark = pmark.prevAll('input');
+
+	
+
+		if(mark.prop('checked')) return false;
+
+		
+
+		var list = $(this).parent().find('i');
+
+		for(var i=0;i<=num;i++){
+
+			list.eq(i).attr('class','level_solid');
+
+		}
+
+		for(var i=num+1,len=list.length-1;i<=len;i++){
+
+			list.eq(i).attr('class','level_hollow');
+
+		}
+
+		$(this).parent().next().html(degree[num+1]);
+
+
+
+	})
+
+	//点击星星
+
+	$(document).on('click','i[cjmark]',function(){
+
+		var num = $(this).index();
+
+		var pmark = $(this).parents('.revinp');
+
+		var mark = pmark.prevAll('input');
+
+		
+
+		if(mark.prop('checked')){
+
+			mark.val('');
+
+			mark.prop('checked',false);mark.prop('disabled',true);	
+
+		}else{
+
+			mark.val(num);
+
+			mark.prop('checked',true);mark.prop('disabled',false);	
+
+		}
+
+	})
+
+	//选框
+
+	$('#Addnewskill_119 input[type="checkbox"]').change(function(){
+
+		if($(this).not(':checked')){//!($(this).prop('checked'))
+
+			$(this).prop('checked',false);$(this).prop('disabled',true)
+
+			var smark = $(this).nextAll('.revinp');
+
+			smark.find('span.revgrade').html('未评分');
+
+			smark.find('i').attr('class','level_hollow');
+
+			smark.val(6);
+
+		}
+
+	})
+
+	
+
+
+
+})
+
+</script>
+</head>
+
+<body>
+<div class="big"> 
+  <!------顶部------>
+  <div class="dingbu clearfix">
+    <div class="w1200">
+      <div class="dingbu_fl fl">您好，欢迎您来到零食加盟网！</div>
+      <div class="dingbu_fr fr">
+        <ul>
+          <li><a href="#">找项目</a></li>
+          <li><a href="#">网站导航</a></li>
+          <li><a href="#">帮助中心</a></li>
+          <li><a href="#">注册</a></li>
+          <li><a href="#">登录</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!------over------> 
+  <!------header------>
+  <div class="w1200">
+    <div class="header_logo fl"><a href="#"><img src="img/logo.png" /></a></div>
+    <div class="header_sousuo fl">
+      <div class="header_sousuofl fl">
+        <input type="text" placeholder="请输入搜索内容" />
+      </div>
+      <div class="header_sousuofr fr">
+        <input type="button" value="搜&nbsp;索" />
+      </div>
+    </div>
+  </div>
+  <!------over------> 
+  <!------nav------>
+  <nav>
+    <div class="nav1200">
+      <ul>
+        <li><a href="#">全部商品分类<img src="img/more.png" /></a>
+          <ul>
+            <li id="meun">
+              <div class="banfls_top1">投资行业</div>
+            </li>
+            <li>
+              <div id="meunh"> <span><a href="#">零食店加盟</a></span> <span><a href="#">进口食品加盟</a></span> <span><a href="#">干果店加盟</a></span> <span><a href="#">特色休闲食品</a></span> </div>
+            </li>
+            <li id="meun">
+              <div class="banfls_top2 clearfix">投资金额</div>
+            </li>
+            <li>
+              <div id="meunh"> <span><a href="#">1万以下</a></span> <span><a href="#">1~5万元</a></span> <span><a href="#">5~10万元</a></span> <span><a href="#">10~20万元</a></span> <span><a href="#">20~50万元</a></span> <span><a href="#">50~100万元</a></span> </div>
+            </li>
+            <li id="meun">
+              <div class="banfls_top3 clearfix">热门城市</div>
+            </li>
+            <li>
+              <div id="meunh"> <span><a href="#">北京</a></span> <span><a href="#">上海</a></span> <span><a href="#">天津</a></span> <span><a href="#">重庆</a></span> <span><a href="#">石家庄</a></span> <span><a href="#">太原</a></span> <span><a href="#">南京</a></span> <span><a href="#">苏州</a></span> <span><a href="#">合肥</a></span> <span><a href="#">厦门</a></span> <span><a href="#">济南</a></span> <span><a href="#">青岛</a></span> <span><a href="#">郑州</a></span> <span><a href="#">武汉</a></span> <span><a href="#">长沙</a></span> </div>
+            </li>
+            <li id="meun">
+              <div class="banfls_top4 clearfix">客户属性</div>
+            </li>
+            <li>
+              <div id="meunh"> <span><a href="#">中小学生</a></span> <span><a href="#">公司白领</a></span> <span><a href="#">中老年人</a></span> <span><a href="#">工薪阶级</a></span> <span><a href="#">孕妇</a></span> <span><a href="#">大学</a></span> </div>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">找项目</a></li>
+        <li><a href="#">创业专题</a></li>
+        <li><a href="#">零食资讯</a></li>
+        <li><a href="#">项目点评</a></li>
+        <li><a href="#">项目问答</a></li>
+        <li><a href="#">排行榜</a></li>
+      </ul>
+    </div>
+  </nav>
+  <script>
+    $(function () {
+        $('.nav1200 ul li').on('mouseover mouseleave',function(e){
+            e.type=='mouseover' ? $(this).addClass("jg") : 
+            $(this).removeClass("jg")
+        })
+    });
+    
+    </script> 
+  <!------over------>
+  <div class="big_con">
+    <div class="titeler">您当前的位置：<a href="#">零食加盟网</a>&nbsp;>&nbsp;<i><a href="#">品牌页</a></i></div>
+    <!------sub------>
+    <div class="sub"> 
+      <!----品牌---->
+
+		<div class="brand">
+        	<div class="brandfl fl"><img src="img/22.png" /></div>
+            
+            <div class="brandco fl">
+            	<div class="brandco_top">
+                	<span>【一扫光零食】 邀请您的加盟</span>
+                    <i>投资金额：<em>10~20</em>万</i>
+                    <i>所在区域：上海</i>
+                </div>
+                <div class="brandco_con">
+                	<ul>
+                    	<li>所属区域：零食</li>
+                        <li>适合人群：白领创业>90后创业</li>
+                        <li>门店数量：456</li>
+                        <li>加盟商好评率：<i>97%</i></li>
+                        <li>意向加盟：1250</li>
+                        <li>加盟热线：<em>400-881-7938</em></li>
+                    </ul>
+                </div>
+                <div class="brandco_con1">招商区域：北京  广东  湖北  湖南  河南等全国各地</div>
+            	
+                <div class="brandco_btm">
+                	<i><input type="button" value="立即咨询" /></i>
+                    <em><input type="button" value="索要资料" /></em>
+                </div>
+                
+            </div>
+            
+            <div class="brandfr fr">
+            	<div class="brandfr1"><i>2</i></div>
+                <div class="brandfr2"><img src="img/22.png" /></div>
+                <div class="brandfr4">上海卡哇伊实业有限公司</div>
+                <div class="brandfr3">营业执照号：9131000060721825XC</div>
+                <div class="brandfr3">注册资金：5000万元</div>
+                <div class="brandfr5">资质认证：<i>人工已审核</i></div>
+                <div class="brandfr3">公司地址：上海市宝山区沪太路3100号</div>
+                <div class="brandfr6">
+                	<i><input type="text" /></i>
+                    <span><input type="button" value="免费回拨" /></span>
+                </div>
+            </div>
+        </div>
+
+      <!----品牌 end----> 
+      <!----保障---->
+      <div class="ensure">
+        <div class="ensurefl"> <span> <i><img src="img/28.png" /></i> <em>进货
+          <p>保障</p>
+          </em> </span>
+          <ul>
+            <li><i><img src="img/29.png" width="29"  height="29"/></i><em>质量保证</em></li>
+            <li><i><img src="img/30.png" width="29"  height="29"/></i><em>换货保证</em></li>
+          </ul>
+        </div>
+        <div class="ensurefl"> <span> <i><img src="img/32.png" /></i> <em>信用
+          <p>保障</p>
+          </em> </span>
+          <ul>
+            <li><i><img src="img/33.png" width="29"  height="29"/></i><em>质量保证</em></li>
+            <li><i><img src="img/34.png" width="29" height="20" style="padding-top:5px;"/></i><em>换货保证</em></li>
+          </ul>
+        </div>
+        <div class="ensurefr"> <span> <i><img src="img/31.png" /></i> <em>信用
+          <p>保障</p>
+          </em> </span>
+          <ul>
+            <li><a href="#">行业领先品牌</a></li>
+            <li><a href="#">公司口碑好</a></li>
+            <li><a href="#">公司实力强</a></li>
+            <li><a href="#">管理制度完善</a></li>
+            <li><a href="#">公司实力强</a></li>
+          </ul>
+        </div>
+      </div>
+      <!----保障 end----> 
+      <!------subfl------>
+      <div class="subfl fl"> 
+        <!----品牌详情----> 
+        <!--导航-->
+        <div class="lm-nav" id="nav" > <span class="moren lm-navs"><a href="#o-info_1">品牌简介</a></span> <span><a href="#o-info_2">品牌优势</a></span> <span><a href="#o-info_3">投资费用</a></span> <span><a href="#o-info_4">利润分析</a></span> <span><a href="#o-info_5">加盟条件</a></span> <span class="lm-nav4"><a href="#o-info_6">索要资料</a></span> </div>
+        <script>
+                   $(function(){
+                       var a = $('#nav'),
+                        b =a.offset();
+                       $(document).on('scroll',function(){
+                          var	c = $(document).scrollTop();
+                          if(b.top<=c){
+                            a.css({'position':'fixed','top':'0px'})
+                            }else{
+                                a.css({'position':'absolute','top':'0px'})
+                            }
+                        })
+                    })
+                   </script> 
+        <!--导航 end--> 
+        <!--一扫光数据-->
+        <div class="subfls">
+          <div class="data tops">
+            <div class="subtit"><i>一扫光<em>数据</em></i></div>
+            <div class="criti">
+              <div class="record fl">
+                <div class="recordtop">投资回报率分析：</div>
+                <div class="recordbtm">
+                  <div class="recordfl">
+                    <iframe src="samples/pie.html" width="100%" height="240px"></iframe>
+                  </div>
+                </div>
+              </div>
+              <div class="recordfls">
+                <div class="recordtop">投资回报率分析：</div>
+                <iframe src="samples/bar.html" width="100%" height="270px"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="data">
+            <div class="subtit"  id="o-info_1"><i>一扫光<em>品牌简介</em></i></div>
+            <div class="datas">
+              <p>　“一扫光”零食加盟品牌营充分整合了加盟连锁的成熟模式和拥有多家加盟店的运营管理经验，开创了“直营连锁专卖店+经营专卖店”的全新连锁加盟模式，与千百万充满激情的零食创业者，共同打造“一扫光”零食加盟行业中的著名品牌。 </p>
+              <p><img src="img/14.png" /></p>
+              <p>“一扫光”零食加盟秉承“精诚合作，同谋共创”的经营理念，致力于与零食加盟商共同打造“绿色、美味”的零食专卖体系，在品牌林立的食品行业，独特的零食店加盟道路，把“一扫光”零食品牌塑造成为消费者零食王国。</p>
+              <p>“一扫光”零食产品主要分为特色风味零食、进口零食、休闲小食品、精致特色饮品等系列。产品原料精挑细选，包装类别清晰，而且还有高档礼品盒装；产品齐全，风味独特，品种丰富，价廉物美，满足不同消费群体不同层次的要求。</p>
+              <p>“一扫光”零食自身具备强大的研发能力，能根据当地消费口味及消费习惯，总部凭借诚实经营，互利互惠的双赢合作模式，以及优质的产品质量，本品牌获得了“中国十佳零食”、“消费者满意食品”等多个荣誉称号，在业内以及消费者中获得良好的口碑。</p>
+            </div>
+          </div>
+          <div class="data" id="o-info_2">
+            <div class="subtit"><i>一扫光<em>加盟优势</em></i></div>
+            <div class="datas">
+              <p>一扫光零食加盟前景广阔，是一款赚钱的好项目，那么一下是加盟商需满足的条件：</p>
+              <p>1、加盟商具有独立行为能力，而且无不良记录社会公民。</p>
+              <p>2、加盟商正确的心态面对投资行业所带来的问题，具有一定的抗风险意识。</p>
+              <p>3、还必须具有一定的经济实力，资金来源合法加盟商自身要有良好的信誉，有长远发展事业的眼光。</p>
+              <p>4、热衷零食发展事业，吃苦耐劳，全心创业并有强烈的服务意识。</p>
+              <p>5、具有理性的投资心态，能够客观地看待投资与回报的关系，没有暴利期望。</p>
+              <p>6、认同一扫光特许经营的理念，服务体系，维护一扫光品牌形象，接受总部统一管理。</p>
+              <p>如果你符合上述条件，想要加盟，那就看看加盟我盟都有哪些流程吧。</p>
+            </div>
+          </div>
+          <div class="data" id="o-info_3">
+            <div class="subtit"><i>一扫光<em>利润分析</em></i></div>
+            <div class="analysis">
+              <div class="analysis1">一扫光加盟费用</div>
+              <div class="analysis2">
+                <table cellspacing="0">
+                  <tr>
+                    <td>加盟城市</td>
+                    <td>一线城市(以深圳为例)</td>
+                    <td>二线城市(以苏州为例)</td>
+                    <td>三线城市(以海口为例)</td>
+                  </tr>
+                  <tr>
+                    <td>店铺面积</td>
+                    <td>85㎡</td>
+                    <td>85㎡</td>
+                    <td>85㎡</td>
+                  </tr>
+                  <tr>
+                    <td>房租费用</td>
+                    <td>3.9万元/月</td>
+                    <td>3.9万元/月</td>
+                    <td>3.9万元/月</td>
+                  </tr>
+                  <tr>
+                    <td>装修费用</td>
+                    <td>900元/㎡</td>
+                    <td>900元/㎡</td>
+                    <td>900元/㎡</td>
+                  </tr>
+                  <tr>
+                    <td>首批进货费</td>
+                    <td>4.5万元</td>
+                    <td>4.5万元</td>
+                    <td>4.5万元</td>
+                  </tr>
+                  <tr>
+                    <td>广告宣传费用</td>
+                    <td>2万元</td>
+                    <td>2万元</td>
+                    <td>2万元</td>
+                  </tr>
+                  <tr>
+                    <td>开业费用</td>
+                    <td>1万元</td>
+                    <td>1万元</td>
+                    <td>1万元</td>
+                  </tr>
+                  <tr>
+                    <td>人员工资</td>
+                    <td>3000元/月/人(3人)</td>
+                    <td>3000元/月/人(3人)</td>
+                    <td>3000元/月/人(3人)</td>
+                  </tr>
+                  <tr>
+                    <td>水电杂费</td>
+                    <td>2000元/月</td>
+                    <td>2000元/月</td>
+                    <td>2000元/月</td>
+                  </tr>
+                  <tr>
+                    <td>流动资金</td>
+                    <td>8万元</td>
+                    <td>8万元</td>
+                    <td>8万元</td>
+                  </tr>
+                  <tr>
+                    <td>总投资费用</td>
+                    <td>14.9万元</td>
+                    <td>14.9万元</td>
+                    <td>14.9万元</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">以上投资费用为预估，可能会与实际情况有所差别，仅供参考。</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="data" id="o-info_4">
+            <div class="subtit"><i>一扫光<em>加盟流程</em></i></div>
+            <div class="datas">
+              <p>1、加盟意向咨询（电话、网站留言、来访）简单对品牌进行了解。</p>
+              <p>2、对品牌有意向，还可以到公司总部来实地考察，做具体的了解</p>
+              <p>3、进实地考察，那么双方确定无疑，加盟商可以想公司总部提交申请表格。</p>
+              <p>4、品牌总部要对加盟商进行核实，勘察及选址确认、评估</p>
+              <p>5、签订《特许加盟合同书》并提供管理手册</p>
+              <p>7、开业筹备计划，公司有专业的人员到地段实地考察。</p>
+              <p>8、试营业期间，遇到任何问题及时反映给总部，给与相应的对策。</p>
+              <p>10、正式营业</p>
+            </div>
+          </div>
+          <div class="data" id="o-info_5">
+            <div class="subtit"><i>一扫光<em>加盟流程</em></i></div>
+            <div class="datas">
+              <p>1、加盟意向咨询（电话、网站留言、来访）简单对品牌进行了解。</p>
+              <p>2、对品牌有意向，还可以到公司总部来实地考察，做具体的了解</p>
+              <p>3、进实地考察，那么双方确定无疑，加盟商可以想公司总部提交申请表格。</p>
+              <p>4、品牌总部要对加盟商进行核实，勘察及选址确认、评估</p>
+              <p>5、签订《特许加盟合同书》并提供管理手册</p>
+              <p>7、开业筹备计划，公司有专业的人员到地段实地考察。</p>
+              <p>8、试营业期间，遇到任何问题及时反映给总部，给与相应的对策。</p>
+              <p>10、正式营业</p>
+            </div>
+          </div>
+        </div>
+        <div class="data" id="o-info_6">
+          <div class="subtit"><i>一扫光<em>门店加盟</em></i></div>
+          <div id="marquee2">
+            <ul>
+              <li><a href="#"><img src="img/14.png" /></a></li>
+              <li><a href="#"><img src="img/15.png" /></a></li>
+              <li><a href="#"><img src="img/16.png" /></a></li>
+              <li><a href="#"><img src="img/17.png" /></a></li>
+              <li><a href="#"><img src="img/19.png" /></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="data">
+          <div class="subtit"><i>加盟商点评</i></div>
+          <div class="criti">
+            <div class="critis">
+              <div class="critisfl"><img src="img/7.jpg" /></div>
+              <div class="critisfr">
+                <div class="critisfr_top"> <i>小虎牙要吃遍上海滩</i> <span>您的评分：<em>4.5</em> 分  非常满意!</span> </div>
+                <div class="cc">
+                  <div class="ss">
+                    <p>南丰城北区和南区不通 若要停车请从紫云西路的入口进 周末每200消费可免一小时 最多累积四小时 去百合居吃 人均200 停车还挺合算的 十一点到 </p>
+                    <p>刚开门 瞬间坐满 特别嘈杂 环境真的不灵</p>
+                    <p>虾饺皇里有笋丁 配大虾 好吃 但没有什么汁水</p>
+                    <p>黑胡椒牛仔骨就是黑胡椒味 但肉质比较老 费牙</p>
+                    <p>糯米鸡不好吃 只有糯米 里面的馅料丁很少 味道淡而无味 不要点</p>
+                    <p>三个人点了很多菜和点心 香芒芝士奶酪酥 酥皮很脆 当中夹心软软的 口感很好 也不甜腻 燕窝蛋挞 蛋很嫩滑 和牛包黑胡椒味的 感觉也就一般 虾饺皇 很大一颗虾包在里面 实实在在 萝卜糕比较一般 太粉了 面粉加多的感觉 吃起来没啥口感了 蛋黄流沙包 对我而言甜了些 烧肉皮很脆 而且不腻 肉也比较瘦 没有太多的肥肉 卤水豆腐 味道是我喜欢的 龙虾泡饭 里面龙虾肉还挺多的 还有点猪肉 很鲜 就是稍稍偏咸了点 雪花牛肉粒也没感觉到特别惊艳 三杯鸡鸡肉很嫩</p>
+                    <p>三个人点了很多菜和点心 香芒芝士奶酪酥 酥皮很脆 当中夹心软软的 口感很好 也不甜腻 燕窝蛋挞 蛋很嫩滑 和牛包黑胡椒味的 感觉也就一般 虾饺皇 很大一颗虾包在里面 实实在在 萝卜糕比较一般 太粉了 面粉加多的感觉 吃起来没啥口感了 蛋黄流沙包 对我而言甜了些 烧肉皮很脆 而且不腻 肉也比较瘦 没有太多的肥肉 卤水豆腐 味道是我喜欢的 龙虾泡饭 里面龙虾肉还挺多的 还有点猪肉 很鲜 就是稍稍偏咸了点 雪花牛肉粒也没感觉到特别惊艳 三杯鸡鸡肉很嫩</p>
+                    <p>三个人点了很多菜和点心 香芒芝士奶酪酥 酥皮很脆 当中夹心软软的 口感很好 也不甜腻 燕窝蛋挞 蛋很嫩滑 和牛包黑胡椒味的 感觉也就一般 虾饺皇 很大一颗虾包在里面 实实在在 萝卜糕比较一般 太粉了 面粉加多的感觉 吃起来没啥口感了 蛋黄流沙包 对我而言甜了些 烧肉皮很脆 而且不腻 肉也比较瘦 没有太多的肥肉 卤水豆腐 味道是我喜欢的 龙虾泡饭 里面龙虾肉还挺多的 还有点猪肉 很鲜 就是稍稍偏咸了点 雪花牛肉粒也没感觉到特别惊艳 三杯鸡鸡肉很嫩</p>
+                  </div>
+                  <div class="kai buxiangkai">展开</div>
+                </div>
+                <div class="critis_tu">
+                  <ul>
+                    <li><img src="img/12.jpg" /></li>
+                    <li><img src="img/18.jpg" /></li>
+                  </ul>
+                </div>
+                <div class="critis_btm"> <i>03-28 一扫光零食店</i> <span> <em><a href="#">回应</a></em> <em><a href="#">收藏</a></em> <em><a href="#">举报</a></em> </span> </div>
+              </div>
+            </div>
+            <div class="critis">
+              <div class="critisfl"><img src="img/10.jpg" /></div>
+              <div class="critisfr">
+                <div class="critisfr_top"> <i>夏沫冰蓝</i> <span>您的评分：<em>4.5</em> 分  非常满意!</span> </div>
+                <div class="cc">
+                  <div class="ss">
+                    <p>南丰城北区和南区不通 若要停车请从紫云西路的入口进 周末每200消费可免一小时 最多累积四小时 去百合居吃 人均200 停车还挺合算的 十一点到 </p>
+                    <p>刚开门 瞬间坐满 特别嘈杂 环境真的不灵</p>
+                    <p>虾饺皇里有笋丁 配大虾 好吃 但没有什么汁水</p>
+                    <p>黑胡椒牛仔骨就是黑胡椒味 但肉质比较老 费牙</p>
+                    <p>糯米鸡不好吃 只有糯米 里面的馅料丁很少 味道淡而无味 不要点</p>
+                  </div>
+                  <div class="kai buxiangkai">展开</div>
+                  <script>
+                                    $(function(){
+                                        
+                                         $(".cc").each(function(i){ 
+                                            var $ssheight = $(".cc").eq(i).children(".ss").height();
+                                            if($ssheight<200)
+                                            {
+                                                $(".cc").eq(i).children(".kai").hide()
+                                            }
+                                            
+                                          }); 
+                                         $(".cc").on("click",".buxiangkai",function(){
+                                            $(this).siblings(".ss").css("max-height","none");
+                                            $(this).removeClass("buxiangkai").addClass("youzhongnibiedian").html("收起");
+                                        })
+                                         $(".cc").on("click",".youzhongnibiedian",function(){ 
+                                            $(this).siblings(".ss").css("max-height","200px");
+                                            $(this).addClass("buxiangkai").removeClass("youzhongnibiedian").html("展开")
+                                        })
+                                        /*$("span.youzhongnibiedian").on("click",function(){
+                                    　　　　$(this).css("background-color","pink");
+                                    　　});*/
+                                        
+                                    })
+                                    </script> 
+                </div>
+                <div class="critis_tu">
+                  <ul>
+                    <li><img src="img/12.jpg" /></li>
+                    <li><img src="img/18.jpg" /></li>
+                  </ul>
+                </div>
+                <div class="critis_btm"> <i>03-28 一扫光零食店</i> <span> <em><a href="#">回应</a></em> <em><a href="#">收藏</a></em> <em><a href="#">举报</a></em> </span> </div>
+              </div>
+            </div>
+            <div class="critis">
+              <div class="critisfl"><img src="img/7.jpg" /></div>
+              <div class="critisfr">
+                <div class="critisfr_top"> <i>小虎牙要吃遍上海滩</i> <span>您的评分：<em>4.5</em> 分  非常满意!</span> </div>
+                <div class="cc">
+                  <div class="ss">
+                    <p>南丰城北区和南区不通 若要停车请从紫云西路的入口进 周末每200消费可免一小时 最多累积四小时 去百合居吃 人均200 停车还挺合算的 十一点到 </p>
+                    <p>刚开门 瞬间坐满 特别嘈杂 环境真的不灵</p>
+                    <p>虾饺皇里有笋丁 配大虾 好吃 但没有什么汁水</p>
+                    <p>黑胡椒牛仔骨就是黑胡椒味 但肉质比较老 费牙</p>
+                    <p>糯米鸡不好吃 只有糯米 里面的馅料丁很少 味道淡而无味 不要点</p>
+                  </div>
+                  <div class="kai buxiangkai">展开</div>
+                </div>
+                <div class="critis_tu">
+                  <ul>
+                    <li><img src="img/12.jpg" /></li>
+                    <li><img src="img/18.jpg" /></li>
+                  </ul>
+                </div>
+                <div class="critis_btm"> <i>03-28 一扫光零食店</i> <span> <em><a href="#">回应</a></em> <em><a href="#">收藏</a></em> <em><a href="#">举报</a></em> </span> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!----品牌详情 end----> 
+        <!--留言板 top-->
+        
+        <div class="ly_buzhou">
+          <dl>
+            <dt><img src="img/bj_ico1.png" /></dt>
+            <dd> <strong>登录99lsw.cn</strong>
+              <p>www.99lsw.cn进入网站</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt><img src="img/bj_ico2.png" /></dt>
+            <dd> <strong>寻找项目</strong>
+              <p>浏览，查询，选择 项目</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt><img src="img/bj_ico3.png" /></dt>
+            <dd> <strong>留言咨询</strong>
+              <p>页面留言，电话咨询在线沟通</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt><img src="img/bj_ico4.png" /></dt>
+            <dd> <strong>等待回访</strong>
+              <p>浏览，查询，选择 项目</p>
+            </dd>
+          </dl>
+          <dl>
+            <dt><img src="img/bj_ico5.png" /></dt>
+            <dd> <strong>成功合作</strong>
+              <p>实地考察，技术培训，成功开店</p>
+            </dd>
+          </dl>
+        </div>
+        
+        <!--留言板 top 结束--> 
+        
+        <!--留言板-->
+        <div class="ly_nav">
+          <div class="ly_tit">如果您对此项目感兴趣，请在此留言，坐等企业找你（成功的创业者90%都是通过留言，留言只需要5秒钟）</div>
+          <div class="ly_left fl">
+            <div class="ly_fl_tit">好项目都在这儿</div>
+            <ul>
+              <li> <strong><a href="#">知名招商项目汇聚平台</a></strong>
+                <p>汇聚海量知名，高诚信度品牌招商项目，随时为您提供招商信息</p>
+              </li>
+              <li> <strong><a href="#">事实和口碑胜于一切</a></strong>
+                <p>千万创业者通过这里找项目，迈出成功创业第一步</p>
+              </li>
+              <li> <strong><a href="#">诚信的商机发布平台</a></strong>
+                <p>请您在加盟留言时，选择有实力，加盟店多，成功案列多，合法资质，证照齐全，诚信经营的品牌</p>
+              </li>
+            </ul>
+          </div>
+          <div class="ly_right fl">
+            <form method="post" action="#" class="form">
+              <div class="zixun_h"> <strong>姓名：</strong><span class="zx_text">
+                <input type="text" name="bd_bp_messName" id="xiangm" maxlength="5">
+                </span><code>*</code><em>您的真实姓名，请使用中文</em> </div>
+              <div class="zixun_h"> <strong>电话：</strong><span class="zx_text">
+                <input type="text" name="bd_bp_messName" id="xiangm" maxlength="5">
+                </span><code>*</code><em>填写你的手机或座机</em> </div>
+              <div class="zixun_h"> <strong>邮箱：</strong><span class="zx_text">
+                <input type="text" name="bd_bp_messName" id="xiangm" maxlength="5">
+                </span><code>*</code><em>您常用的电子邮箱，会收到加盟手册</em> </div>
+              <div class="zixun_h"> <strong>地址：</strong><span class="zx_text">
+                <input type="text" name="bd_bp_messName" id="xiangm" maxlength="5">
+                </span><code>*</code><em>没有地址将无法为您免费邮寄资料</em> </div>
+              <div class="zixun_h"> <strong>回访：</strong> <span class="huifang">
+                <input type="radio" name="sex" value="n"  class="radio"/>
+                随时
+                <input type="radio" name="sex" value="s" class="radio"/>
+                上班时间
+                <input type="radio" name="sex" value="x" class="radio"/>
+                下班时间 </span> <code>*</code><em>选择方便联系你的回访时间</em> </div
+                            
+                            >
+              <div class="zixun_h1">
+                <div class="zixun_h_l">
+                  <div class="clearfix"> <strong>留言：</strong>
+                    <div class="zx_textarea">
+                      <textarea name="content" id="content" onfocus=""></textarea>
+                    </div>
+                  </div>
+                  <input type="submit" value="提交留言" class="button130x38" name="bd_bp_messText1">
+                </div>
+                <script type="text/javascript">
+                                  function avals(obj){
+                                        var __c = document.cookie;
+                                        var __b = false;
+                                        var __s = __c.indexOf('INDI');
+                                        if(__s>-1){var __a = __c.match(/USERNAME=.[^&]+/);if(__a!=null){__b=true;}}
+                                        var d_id = obj.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.getAttribute("id")
+                                        jQuery('#content').val(jQuery('#content').val()+obj.innerHTML.replace("·",""));
+                                        hide_menu1("msgList");
+                                    }
+                                    
+                                    function hide_menu1(obj){jQuery("#"+obj).css('display','block');}
+                                </script>
+                <div class="zixun_h_r" id="msgList" style="display: block;">
+                  <h3>您可以根据下列意向选择快捷留言</h3>
+                  <ul>
+                    <li><a onclick="avals(this);" href="javascript:avals(this);">1.我们这里有加盟店吗？</a></li>
+                    <li><a onclick="avals(this);" href="javascript:avals(this);">2.我想了解一些加盟资料</a></li>
+                    <li><a onclick="avals(this);" href="javascript:avals(this);">3.我想了解一些加盟资料</a></li>
+                    <li class="none"><a onclick="avals(this);" href="javascript:avals(this);">4.我对这个项目感兴趣，请联系我</a></li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+          </div>
+          <!--ly_right--> 
+        </div>
+        <!--ly_nav--> 
+        
+        <!--留言板 结束--> 
+        <!----内页新闻---->
+        <div class="inside">
+          <div class="tit"><i>项目新闻</i></div>
+          <div class="insides">
+            <div class="insideer fl">
+              <ul>
+                <li> <i><a href="#">冒菜店生意不好怎么办？新客进店很难</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">自助早餐连锁加盟店</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">三生三世遇蜜逗，十里桃花处处香</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">韩国纸上烤肉加盟多少钱</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">醉品告诉你如何鉴别冻顶乌龙</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">汤姆之家汉堡，层层把关，打造美</a></i> <em>2017-11-02</em> </li>
+              </ul>
+            </div>
+            <div class="insideer fr">
+              <ul>
+                <li> <i><a href="#">冒菜店生意不好怎么办？新客进店很难</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">自助早餐连锁加盟店</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">三生三世遇蜜逗，十里桃花处处香</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">韩国纸上烤肉加盟多少钱</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">醉品告诉你如何鉴别冻顶乌龙</a></i> <em>2017-11-02</em> </li>
+                <li> <i><a href="#">汤姆之家汉堡，层层把关，打造美</a></i> <em>2017-11-02</em> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!----内页新闻 end----> 
+      </div>
+      <!------subfl end------> 
+      <!------subfr------>
+      <div class="subfr fr"> 
+        <!------平分------>
+        <div class="starr">
+          <div class="star1">3.2</div>
+          <div id="startone"  class="block clearfix" >
+            <div class="star_score"></div>
+          </div>
+          <div class="star2">已有3521人评论</div>
+          <div class="star3"><a href="#">了解详情</a></div>
+        </div>
+        <!------平分 end------> 
+        <!------发展指数------>
+        <div class="starer">
+          <div class="star4">发展指数</div>
+          <div class="star5">88.88</div>
+          <div class="star6">2017年3月 排名第2</div>
+          <div class="star7">
+            <canvas id="canvas" height="250" width="250"></canvas>
+          </div>
+        </div>
+        <!------发展指数 end------> 
+        <div class="subfrs">
+          <div class="tit"><i>最新点评</i></div>
+          <div class="comment">
+            <ul>
+              <li> <i><a href="#">冒菜店生意不好怎么办？新客进店很</a></i> <span><a href="#">你看了书和会用、用的好是有差别的。作为前端，Html、CSS和JavaScript还是都需要会的。自学，不参与项......</a></span> </li>
+              <li> <i><a href="#">自助早餐连锁加盟店</a></i> <span><a href="#">你看了书和会用、用的好是有差别的。作为前端，Html、CSS和JavaScript还是都需要会的。自学，不参与项......</a></span> </li>
+              <li> <i><a href="#">三生三世遇蜜逗，十里桃花处处香</a></i> <span><a href="#">你看了书和会用、用的好是有差别的。作为前端，Html、CSS和JavaScript还是都需要会的。自学，不参与项......</a></span> </li>
+              <li> <i><a href="#">韩国纸上烤肉加盟多少钱</a></i> <span><a href="#">你看了书和会用、用的好是有差别的。作为前端，Html、CSS和JavaScript还是都需要会的。自学，不参与项......</a></span> </li>
+              <li> <i><a href="#">醉品告诉你如何鉴别冻顶乌龙</a></i> <span><a href="#">你看了书和会用、用的好是有差别的。作为前端，Html、CSS和JavaScript还是都需要会的。自学，不参与项......</a></span> </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="subfrs">
+          <div class="tit"><i>创业专题</i></div>
+          <div class="special">
+            <ul>
+              <li><a href="#">冒菜店生意不好怎么办？新客进店很</a></li>
+              <li><a href="#">自助早餐连锁加盟店</a></li>
+              <li><a href="#">三生三世遇蜜逗，十里桃花处处香</a></li>
+              <li><a href="#">韩国纸上烤肉加盟多少钱</a></li>
+              <li><a href="#">醉品告诉你如何鉴别冻顶乌龙</a></li>
+              <li><a href="#">汤姆之家汉堡，层层把关，打造美</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="subfrs">
+          <div class="tit"><i>零食资讯</i></div>
+          <div class="special">
+            <ul>
+              <li><a href="#">冒菜店生意不好怎么办？新客进店很</a></li>
+              <li><a href="#">自助早餐连锁加盟店</a></li>
+              <li><a href="#">三生三世遇蜜逗，十里桃花处处香</a></li>
+              <li><a href="#">韩国纸上烤肉加盟多少钱</a></li>
+              <li><a href="#">醉品告诉你如何鉴别冻顶乌龙</a></li>
+              <li><a href="#">汤姆之家汉堡，层层把关，打造美</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      <!------subfr end------> 
+    </div>
+    <!------sub end------> 
+  </div>
+  <!----底部 end---->
+  <div class="footer">
+    <div class="cy_5bu">
+      <p></p>
+    </div>
+    <div id="linkfrend">
+      <div class="fixed" id="youqinglink" style="height:75px;">
+        <ul>
+          <li id="title_index">友情链接:</li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+          <li><a href="#">美食网</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 友情链接结束-->
+    
+    <div class="foot">
+      <ul>
+        <li><a target="_blank" href="#" rel="nofollow">关于我们</a> | <a target="_blank" href="#" rel="nofollow">联系我们</a> | <a href="#" target="_blank">网站地图</a> | <a href="#" target="_blank">友情链接</a> </li>
+      </ul>
+    </div>
+    
+    <!--foot 结束-->
+    
+    <div class="copyright_img"> <a rel="nofollow" href="#" target="_blank"><img width="120" height="45" title="营业执照" alt="营业执照" src="img/businessico.png"></a> <a rel="nofollow" href="#" target="_blank"><img width="120" height="45" title="食品经营-许可证" alt="食品经营-许可证" src="img/foodico.png"></a> <a rel="nofollow" href="javascript:;" target="_blank"><img width="120" height="45" title="华南2C诚信同盟" alt="华南2C诚信同盟" src="img/scoba.jpg"></a> <a rel="nofollow" href="javascript:;" target="_blank"><img width="120" height="45" title="诚信电商" alt="诚信电商" src="img/cxds.jpg"></a> <a target="_blank" href="#" rel="nofollow"><img src="img/weiquan_1.jpg" width="120" height="45" alt="红盾电子标识" title="红盾电子标识"></a> <a target="_blank" href="#" rel="nofollow"><img src="img/weiquan_2.jpg" width="120" height="45" alt="消费维权服务站" title="消费维权服务站"></a> </div>
+    <!--copyright_img 结束-->
+    
+    <div class="divd">
+      <div style="margin:0 0 5px 0;"><a target="_blank" href="javascript:;"><img src="img/bei.png" style=" position:relative; left:-2px; top:5px;"><span>粤公网安备 44010302000159号</span></a><span>&nbsp;苏ICP备17016124号&nbsp;许可证：粤B2-20110008</span> </div>
+      <span>Copyright © 中国零食网 2009 - 2015,</span> <span>All Rights Reserved</span><br>
+      <span>凡本网注明“lingshi.com”的所有作品，包括文字、图片、程序等，版权均属于中国零食网所有，未经同意，不得用于商业用途。</span> </div>
+    <div class="info">本站通用网址：零食网  中国零食网</div>
+    <div class="info">全国统一服务电话：400-600-0404</div>
+  </div>
+  <!--footer--> 
+</div>
+<!----底部 end---->
+
+</div>
+<script src="js/jquery.kxbdMarquee.js"></script> 
+<script>
+             scoreFun($("#startone"))
+             scoreFun($("#starttwo"),{
+                   fen_d:22,//每一个a的宽度
+                   ScoreGrade:5//a的个数5
+                 });
+             //显示分数
+              $(".show_number li p").each(function(index, element) {
+                var num=$(this).attr("tip");
+                var www=num*2*16;//
+                $(this).css("width",www);
+                $(this).parent(".atar_Show").siblings("span").text(num+"分");
+            });
+            </script> 
+<script>
+(function(){
+	$("#marquee1").kxbdMarquee({direction:"left"});
+	$("#marquee2").kxbdMarquee({direction:"left"});
+	$("#marquee3").kxbdMarquee({direction:"up"});
+
+})();
+</script> 
+<script>
+
+	 window.onload = function() {
+
+	 var ctx = document.getElementById("canvas").getContext("2d");
+
+	 ctx.fillRect(10, 10, 20, 20);
+
+ };
+
+	var radarChartData = {
+
+		labels: ["专业", "品牌", "服务", "装修", "培训", "设备", "宣传"],
+
+		datasets: [
+			{
+
+				label: "My Second dataset",
+
+				fillColor: "rgba(151,187,205,0.2)",
+
+				strokeColor: "rgba(151,187,205,1)",
+
+				pointColor: "rgba(151,187,205,1)",
+
+				pointStrokeColor: "#fff",
+
+				pointHighlightFill: "#fff",
+
+				pointHighlightStroke: "rgba(151,187,205,1)",
+
+				data: [28,48,40,19,96,27,100]
+
+			}
+
+		]
+
+	};
+
+
+
+	window.onload = function(){
+
+		window.myRadar = new Chart(document.getElementById("canvas").getContext("2d")).Radar(radarChartData, {
+
+			responsive: true
+
+		});
+
+	}
+
+
+
+	</script>
+</body>
+</html>

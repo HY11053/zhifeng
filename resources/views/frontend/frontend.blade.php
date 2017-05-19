@@ -1,94 +1,148 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta http-equiv="Cache-Control" content="no-transform" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="applicable-device" content="pc" />
-    <meta name="csrf-token" content=" {{ csrf_token() }}">
-    @if(Request::getrequesturi()=='/')
-    <title>@yield('title')</title>
-    @else
-        <title>@yield('title')-58零食网</title>
-    @endif
-    <meta name="keywords" content="@yield('keywords')"/>
-    <meta name="description" content="@yield('description')"/>
-    <link href="/reception/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/reception/css/zxbj_bottom_slide.css" rel="stylesheet" type="text/css"/>
-@yield('headlibs')
-    <script type="text/javascript" src="/reception/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/reception/js/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="/reception/js/index.js"></script>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link href="/reception/css/css.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/reception/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/reception/js/jquery.flexslider-min.js"></script>
 </head>
-
 <body>
-@include('frontend.header')
-
-<main>
-@yield('main_content')
-</main>
-<footer>
-<div class="footer">
-    <div class="footer_nav"><a href="/about/" rel="nofollow">关于我们</a>　|　企业服务　|　人才招聘　|　<a href="/contact/" rel="nofollow">联系我们</a>　|　合作客户　|　<a href="/law/" rel="nofollow">法律声明</a>　|　友情链接　|　服务导航　|　<a href="/sitemap.xml" rel="nofollow">网站地图</a>　　|　加盟导航 sitemap</div>
-
-    <div class="copyright">
-        <p>58零食网友情提示：多打电话、多咨询、实地考察，可降低投资风险！</p>
-        <p>Copyright © 2017 www.58lingshi.com Corporation, All Rights Reserved 上海莫卡网络科技有限公司 版权所有</p>
-        <p><a href="http://www.miitbeian.gov.cn/" rel="nofollow"> 沪ICP备16055116号-11</a></p>
-    </div>
-        <div class="footernew footheight" style="width:1000px;" bosszone="footer">
-            <div style="width:960px;">
-                <p>
-                    <span class="fl"><a href="http://www.cyberpolice.cn/wfjb/" target="_blank" rel="nofollow"><img width="36" height="43" border="0" alt="上海网警网络110" src="/reception/images/temp/816587.gif"></a></span>
-                    <span class="fr"><a href="http://www.cyberpolice.cn/wfjb/" target="_blank" rel="nofollow">上海网警网络110<br>
-		报警平台</a></span>
-                </p>
-                <p>
-                    <span class="fl"><a href="http://www.police.sh.cn/shga/ygjw" target="_blank" rel="nofollow"><img width="36" height="42" border="0" alt="公共信息安全网络监察" src="/reception/images/temp/6743671.jpg"></a></span>
-                    <span class="fr"><a href="http://www.police.sh.cn/shga/ygjw" target="_blank" rel="nofollow">公共信息安<br>
-		全网络监察</a></span>
-                </p>
-
-                <p>
-                    <span class="fl"><a href="http://www.miitbeian.gov.cn" target="_blank" rel="nofollow"><img width="35" height="43" border="0" alt="经营性网站备案信息" src="/reception/images/temp/ind36.gif"></a></span>
-                    <span class="fr"><a target="_blank" class="lcblack" href="http://www.miitbeian.gov.cn" rel="nofollow">经营性网站<br>
-		备案信息</a></span>
-                </p>
-                <p>
-                    <span style="width:44px;" class="fl"><a href="http://www.12377.cn/" target="_blank" rel="nofollow"><img width="44" height="44" border="0" alt="中国互联网举报中心" src="/reception/images/temp/buliang.png"></a></span>
-                    <span style="width:64px;" class="fr"><a class="lcblack" href="http://www.12377.cn/" target="_blank" rel="nofollow">中国互联网<br>
-		举报中心</a></span>
-                </p>
-                <p>
-                    <span style="width:44px;" class="fl"><a href="http://www.wenming.cn" target="_blank" rel="nofollow"><img width="44" height="42" border="0" alt="中国文明网传播文明" src="/reception/images/temp/wmlogo.gif"></a></span>
-                    <span style="width:64px;" class="fr"><a class="lcblack" href="http://www.wenming.cn" target="_blank" rel="nofollow">中国文明网<br>传播文明</a></span>
-                </p>
-                <p style="width:128px;height:52px;border:0;">
-                    <span style="padding:0;" class="fl"><a href="http://t.knet.cn/index_new.jsp" target="_blank" rel="nofollow"><img border="0" alt="诚信网站" src="/reception/images/temp/cxrz5.png"></a></span>
-                </p>
-                <p>
-                    <span style="width:44px;" class="fl"><a href="http://www.sgs.gov.cn/shaic/" target="_blank" rel="nofollow"><img src="http://mat1.gtimg.com/www/images/qq2012/gswj2015.jpg" title="深圳市市场监督管理局企业主体身份公示" alt="深圳市市场监督管理局企业主体身份公示"></a></span>
-                    <span style="width:64px;" class="fr"><a class="lcblack" href="http://www.sgs.gov.cn/shaic/" target="_blank" rel="nofollow">工商网监<br>电子标识</a></span>
-                </p>
+<div class="big">
+    <!------顶部------>
+    <div class="dingbu clearfix">
+        <div class="w1200">
+            <div class="dingbu_fl fl">您好，欢迎您来到零食加盟网！</div>
+            <div class="dingbu_fr fr">
+                <ul>
+                    <li><a href="#">找项目</a></li>
+                    <li><a href="#">网站导航</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">注册</a></li>
+                    <li><a href="#">登录</a></li>
+                </ul>
             </div>
         </div>
-    <div class="wx"><img src="/reception/images/logo_wx.jpg" alt="微信"/></div>
-</div>
-<script type="text/javascript" src="/reception/js/search_ajax.js"></script>
-<script src="/reception/js/comment.js"></script>
-    <script type="text/javascript" src="/reception/js/side_fixed.js"></script>
-<script src="/reception/js/GlobalProvinces.js" type="text/javascript"></script>
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?e40d7bbd754d9f32039af9c7515e047c";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+    </div>
+    <!------over------>
+    <!------header------>
+    <div class="w1200">
+        <div class="header_logo fl"><a href="#"><img src="/reception/img/logo.png" /></a></div>
+        <div class="header_sousuo fl">
+            <div class="header_sousuofl fl">
+                <input type="text" placeholder="请输入搜索内容" />
+            </div>
+            <div class="header_sousuofr fr">
+                <input type="button" value="搜&nbsp;索" />
+            </div>
+        </div>
+    </div>
+    <!------over------>
+    <!------nav------>
+    <nav>
+        <div class="nav1200">
+            <ul>
+                <li><a href="#">全部商品分类<img src="/reception/img/more.png" /></a></li>
+                <li><a href="#">找项目</a></li>
+                <li><a href="#">创业专题</a></li>
+                <li><a href="#">零食资讯</a></li>
+                <li><a href="#">项目点评</a></li>
+                <li><a href="#">项目问答</a></li>
+                <li><a href="#">排行榜</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!------over------>
+    @yield('big_con')
+    <!----底部 end---->
+    <div class="footer">
+        <div class="cy_5bu">
+            <p></p>
+        </div>
+        <div id="linkfrend">
+            <div class="fixed" id="youqinglink" style="height:75px;">
+                <ul>
+                    <li id="title_index">友情链接:</li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                    <li><a href="#">美食网</a></li>
+                </ul>
+            </div>
+        </div>
 
-</footer>
+        <!-- 友情链接结束-->
+
+        <div class="foot">
+            <ul>
+                <li><a target="_blank" href="#" rel="nofollow">关于我们</a> | <a target="_blank" href="#" rel="nofollow">联系我们</a> | <a href="#" target="_blank">网站地图</a> | <a href="#" target="_blank">友情链接</a> </li>
+            </ul>
+        </div>
+
+        <!--foot 结束-->
+
+        <div class="copyright_img"> <a rel="nofollow" href="#" target="_blank"><img width="120" height="45" title="营业执照" alt="营业执照" src="/reception/img/businessico.png"></a> <a rel="nofollow" href="#" target="_blank"><img width="120" height="45" title="食品经营-许可证" alt="食品经营-许可证" src="/reception/img/foodico.png"></a> <a rel="nofollow" href="javascript:;" target="_blank"><img width="120" height="45" title="华南2C诚信同盟" alt="华南2C诚信同盟" src="/reception/img/scoba.jpg"></a> <a rel="nofollow" href="javascript:;" target="_blank"><img width="120" height="45" title="诚信电商" alt="诚信电商" src="/reception/img/cxds.jpg"></a> <a target="_blank" href="#" rel="nofollow"><img src="/reception/img/weiquan_1.jpg" width="120" height="45" alt="红盾电子标识" title="红盾电子标识"></a> <a target="_blank" href="#" rel="nofollow"><img src="/reception/img/weiquan_2.jpg" width="120" height="45" alt="消费维权服务站" title="消费维权服务站"></a> </div>
+        <!--copyright_img 结束-->
+
+        <div class="divd">
+            <div style="margin:0 0 5px 0;"><a target="_blank" href="javascript:;"><img src="/reception/img/bei.png" style=" position:relative; left:-2px; top:5px;"><span>粤公网安备 44010302000159号</span></a><span>&nbsp;苏ICP备17016124号&nbsp;许可证：粤B2-20110008</span> </div>
+            <span>Copyright © 中国零食网 2009 - 2015,</span> <span>All Rights Reserved</span><br>
+            <span>凡本网注明“lingshi.com”的所有作品，包括文字、图片、程序等，版权均属于中国零食网所有，未经同意，不得用于商业用途。</span> </div>
+        <div class="info">本站通用网址：零食网  中国零食网</div>
+        <div class="info">全国统一服务电话：400-600-0404</div>
+    </div>
+    <!--footer-->
+</div>
+<!----底部 end---->
+
+<script src="/reception/js/jquery.kxbdMarquee.js"></script>
+<script>
+    (function(){
+        $("#marquee1").kxbdMarquee({direction:"left"});
+        $("#marquee3").kxbdMarquee({direction:"up"});
+
+    })();
+</script>
 </body>
 </html>
