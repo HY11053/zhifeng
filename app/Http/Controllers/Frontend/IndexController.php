@@ -14,11 +14,12 @@ class IndexController extends Controller
     function Index()
     {
         //零食头部推荐品牌文档
-        $lingshibrands=Archive::where('mid','1')->whereIn('id',[5,38,91, 51,35,115,53,85,72,80])->where('published_at','<=',Carbon::now())->take(10)->orderBy('id','asc')->get();
-        $chaohuobrands=Archive::where('mid','1')->whereIn('id',[8,9,17, 18,28,29,34,49,55,126])->where('published_at','<=',Carbon::now())->take(10)->orderBy('id','asc')->get();
-        $ganguobrands=Archive::where('flags','like','%'.'c'.'%')->where('mid','1')->where('typeid',4)->where('published_at','<=',Carbon::now())->take(10)->latest()->get();
-        $jinkoubrands=Archive::where('flags','like','%'.'c'.'%')->where('mid','1')->where('typeid',5)->where('published_at','<=',Carbon::now())->take(10)->latest()->get();
-        //创业好店
+        $lingshibrands=Archive::where('mid','1')->where('typeid',5)->where('published_at','<=',Carbon::now())->take(10)->orderBy('id','asc')->get();
+        $jinkoubrands=Archive::/*where('flags','like','%'.'c'.'%')->*/where('mid','1')->where('typeid',6)->where('published_at','<=',Carbon::now())->take(10)->latest()->get();
+        $ganguobrands=Archive::/*where('flags','like','%'.'c'.'%')->*/where('mid','1')->where('typeid',7)->where('published_at','<=',Carbon::now())->take(10)->latest()->get();
+        $flinks=flink::latest()->orderBy('created_at','desc')->take(30)->get();
+        /*$chaohuobrands=Archive::where('mid','1')->whereIn('id',[8,9,17, 18,28,29,34,49,55,126])->where('published_at','<=',Carbon::now())->take(10)->orderBy('id','asc')->get();
+       //创业好店
         $cybrands=Archive::where('flags','like','%'.'s'.'%')->where('mid','1')->whereIn('typeid',[1,3,4,5])->where('published_at','<=',Carbon::now())->take(8)->latest()->get();
         $cysbrands=Archive::where('flags','like','%'.'p'.'%')->where('mid','1')->whereIn('typeid',[1,3,4,5])->where('published_at','<=',Carbon::now())->take(11)->orderBy('click','desc')->get();
         $cybsbrands=Archive::where('flags','like','%'.'p'.'%')->where('mid','1')->whereIn('typeid',[1,3,4,5])->where('published_at','<=',Carbon::now())->skip(11)->take(8)->orderBy('click','desc')->get();
@@ -49,13 +50,11 @@ class IndexController extends Controller
         //展会信息
         $zhbrands=Archive::latest()->whereIn('typeid',[8])->where('published_at','<=',Carbon::now())->orderBy('published_at','desc')->take(8)->get();
         //友情链接
-        $flinks=flink::latest()->orderBy('created_at','desc')->take(30)->get();
+
+        */
         return view('frontend.index',compact('lingshibrands','chaohuobrands','ganguobrands',
             'jinkoubrands','cybrands','cysbrands','cybsbrands','latestlingshibrands','latestrlingshibrands','latestchaohuobrands',
             'latestrchaohuobrands','latestjinkoubrands','latestrjinkoubrands','seesbrands','seesrbrands','recommendnews','latesnews','crowdnews','zhbrands','flinks','askrows','caiguonews','chuangyenews'));
     }
-    function demo()
-    {
-    return view('frontend.demo');
-    }
+
 }

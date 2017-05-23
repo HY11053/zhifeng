@@ -7,7 +7,12 @@
             <div class="banfl fl">
                 <div class="banfls">
                     <div class="banfls_top1">投资行业</div>
-                    <div class="banfls_btm"> <span><a href="#">零食店加盟</a></span> <span><a href="#">进口食品加盟</a></span> <span><a href="#">干果店加盟</a></span> <span><a href="#">特色休闲食品</a></span> </div>
+                    <div class="banfls_btm">
+                        <span><a href="/{{\App\AdminModel\Arctype::where('id',5)->value('real_path')}}/">{{\App\AdminModel\Arctype::where('id',5)->value('typename')}}</a></span>
+                        <span><a href="/{{\App\AdminModel\Arctype::where('id',6)->value('real_path')}}/">{{\App\AdminModel\Arctype::where('id',6)->value('typename')}}</a></span>
+                        <span><a href="/{{\App\AdminModel\Arctype::where('id',7)->value('real_path')}}/">{{\App\AdminModel\Arctype::where('id',7)->value('typename')}}</a></span>
+                        <span><a href="/{{\App\AdminModel\Arctype::where('id',8)->value('real_path')}}/">{{\App\AdminModel\Arctype::where('id',8)->value('typename')}}</a></span>
+                    </div>
                     <div class="banfls_top2 clearfix">投资金额</div>
                     <div class="banfls_btm"> <span><a href="#">1万以下</a></span> <span><a href="#">1~5万元</a></span> <span><a href="#">5~10万元</a></span> <span><a href="#">10~20万元</a></span> <span><a href="#">20~50万元</a></span> <span><a href="#">50~100万元</a></span> </div>
                     <div class="banfls_top3 clearfix">热门城市</div>
@@ -271,169 +276,26 @@
             <div class="tits"><span><i>零食店</i>加盟</span></div>
             <div class="w1250">
                 <!----上一排---->
+                @foreach($lingshibrands as $lingshibrand)
                 <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
+                    <div class="join_top"><a href="/{{$lingshibrand->arctype->real_path}}/{{$lingshibrand->id}}.shtml"><img src="{{$lingshibrand->litpic}}" /></a><span><i><a href="/{{$lingshibrand->arctype->real_path}}/{{$lingshibrand->id}}.shtml">{{$lingshibrand->article->brandname}}</a></i></span></div>
                     <div class="join_con">
                         <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
+                            <li>全国门店：{{$lingshibrand->article->brandnum}}家</li>
+                            <li>加盟好评率：<i>{{rand(95,99)}}%</i></li>
+                            <li>投资金额：<i>{{$lingshibrand->article->brandpay}}</i></li>
                             <li><input type="checkbox" />对比</li>
                         </ul>
                     </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
+                    <div class="join_btm clearfix">
+                        <span class="fl"> <input type="button" value="查看详情" /> </span>
+                        <font class="fr">
                             <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
+                        </font>
                     </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
                 </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----上一排 end---->
-                <!----下一排---->
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----下一排 end---->
+            @endforeach
+
             </div>
         </div>
         <!----零食店加盟 end---->
@@ -442,169 +304,28 @@
             <div class="tits"><span><i>进口零食</i>加盟</span></div>
             <div class="w1250">
                 <!----上一排---->
+                @foreach($jinkoubrands as $jinkoubrand)
                 <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
+                    <div class="join_top"><a href="/{{$jinkoubrand->arctype->real_path}}/{{$jinkoubrand->id}}.shtml"><img src="{{$jinkoubrand->litpic}}" /></a><span><i><a href="/{{$jinkoubrand->arctype->real_path}}/{{$jinkoubrand->id}}.shtml">{{$jinkoubrand->article->brandname}}</a></i></span></div>
                     <div class="join_con">
                         <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
+                            <li>全国门店：{{$jinkoubrand->article->brandnum}}家</li>
+                            <li>加盟好评率：<i>{{rand(92,97)}}%</i></li>
+                            <li>投资金额：<i>{{$jinkoubrand->article->brandpay}}</i></li>
                             <li><input type="checkbox" />对比</li>
                         </ul>
                     </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
+                    <div class="join_btm clearfix">
+                        <span class="fl">
+                        <input type="button" value="查看详情" />
+                        </span>
+                        <font class="fr">
                             <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
+                        </font>
                     </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
                 </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----上一排 end---->
-                <!----下一排---->
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----下一排 end---->
+                    @endforeach
+
             </div>
         </div>
         <!----干果炒货加盟 end---->
@@ -613,169 +334,27 @@
             <div class="tits"><span><i>干果炒货</i>加盟</span></div>
             <div class="w1250">
                 <!----上一排---->
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
+                @foreach($ganguobrands as $ganguobrand)
+                    <div class="join fl">
+                        <div class="join_top"><a href="/{{$ganguobrand->arctype->real_path}}/{{$ganguobrand->id}}.shtml"><img src="{{$ganguobrand->litpic}}" /></a><span><i><a href="/{{$ganguobrand->arctype->real_path}}/{{$ganguobrand->id}}.shtml">{{$ganguobrand->article->brandname}}</a></i></span></div>
+                        <div class="join_con">
+                            <ul>
+                                <li>全国门店：{{$ganguobrand->article->brandnum}}家</li>
+                                <li>加盟好评率：<i>{{rand(92,97)}}%</i></li>
+                                <li>投资金额：<i>{{$ganguobrand->article->brandpay}}</i></li>
+                                <li><input type="checkbox" />对比</li>
+                            </ul>
+                        </div>
+                        <div class="join_btm clearfix">
+                        <span class="fl">
+                        <input type="button" value="查看详情" />
+                        </span>
+                            <font class="fr">
+                                <input type="button" value="查看详情" />
+                            </font>
+                        </div>
                     </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----上一排 end---->
-                <!----下一排---->
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/10.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/8.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/7.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <div class="join fl">
-                    <div class="join_top"><a href="#"><img src="/reception/img/9.jpg" /></a><span><i><a href="#">酒窝甜品</a></i></span></div>
-                    <div class="join_con">
-                        <ul>
-                            <li>全国门店：518家</li>
-                            <li>加盟好评率：<i>95%</i></li>
-                            <li>投资金额：<i>5-10万</i></li>
-                            <li><input type="checkbox" />对比</li>
-                        </ul>
-                    </div>
-                    <div class="join_btm clearfix"> <span class="fl">
-            <input type="button" value="查看详情" />
-            </span> <font class="fr">
-                            <input type="button" value="查看详情" />
-                        </font> </div>
-                </div>
-                <!----下一排 end---->
+                @endforeach
             </div>
         </div>
         <!----进口零食加盟 end---->
@@ -886,125 +465,20 @@
             </div>
         </div>
         <!----新闻内容 end---->
-        <!----样板门店---->
 
-        <div class="w1200">
-            <div class="tit"><i>样板门店</i></div>
-            <div id="marquee1">
+    </div>
+    @section('flink')
+        <div id="linkfrend">
+            <div class="fixed" id="youqinglink" style="height:75px;">
                 <ul>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/14.png" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/15.png" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/16.png" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/17.png" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/18.jpg" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
-                    <li>
-                        <div class="templet_top"><a href="#"><img src="/reception/img/19.png" /></a></div>
-                        <div class="templet_con">
-                            <ul>
-                                <li>品牌名称：一扫光零食加盟连锁</li>
-                                <li>店铺业主：张先生</li>
-                                <li>投资金额：<i>10-15万</i></li>
-                                <li>日营业额：￥3000元/天</li>
-                                <li>店铺面积：35平方米</li>
-                                <li>店铺地址：哒哒省哒哒市哒哒县</li>
-                            </ul>
-                        </div>
-                        <div class="templet_btm clearfix"> <span class="fl">
-              <input type="button" value="索取开店资料" />
-              </span> <font class="fr">
-                                <input type="button" value="申请加盟" />
-                            </font> </div>
-                    </li>
+                    <li id="title_index">友情链接:</li>
+                    @foreach($flinks as $flink)
+                        <li><a href="{{$flink->wenurl}}">{{$flink->webname}}</a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
+    @stop
 
-        <!----样板门店 end---->
-
-    </div>
+    <!-- 友情链接结束-->
 @stop

@@ -18,8 +18,8 @@
                     <li><a href="#">找项目</a></li>
                     <li><a href="#">网站导航</a></li>
                     <li><a href="#">帮助中心</a></li>
-                    <li><a href="#">注册</a></li>
-                    <li><a href="#">登录</a></li>
+                    <li><a href="/register">注册</a></li>
+                    <li><a href="/login">登录</a></li>
                 </ul>
             </div>
         </div>
@@ -27,7 +27,7 @@
     <!------over------>
     <!------header------>
     <div class="w1200">
-        <div class="header_logo fl"><a href="#"><img src="/reception/img/logo.png" /></a></div>
+        <div class="header_logo fl"><a href="/"><img src="/reception/img/logo.png" /></a></div>
         <div class="header_sousuo fl">
             <div class="header_sousuofl fl">
                 <input type="text" placeholder="请输入搜索内容" />
@@ -42,13 +42,13 @@
     <nav>
         <div class="nav1200">
             <ul>
-                <li><a href="#">全部商品分类<img src="/reception/img/more.png" /></a></li>
-                <li><a href="#">找项目</a></li>
+                <li><a href="#">全部品牌分类<img src="/reception/img/more.png" /></a></li>
+                <li><a href="/xm/">找项目</a></li>
                 <li><a href="#">创业专题</a></li>
-                <li><a href="#">零食资讯</a></li>
+                <li><a href="/{{\App\AdminModel\Arctype::where('id',2)->value('real_path')}}/">零食资讯</a></li>
                 <li><a href="#">项目点评</a></li>
-                <li><a href="#">项目问答</a></li>
-                <li><a href="#">排行榜</a></li>
+                <li><a href="/ask/">项目问答</a></li>
+                <li><a href="/paihangbang/">排行榜</a></li>
             </ul>
         </div>
     </nav>
@@ -59,60 +59,7 @@
         <div class="cy_5bu">
             <p></p>
         </div>
-        <div id="linkfrend">
-            <div class="fixed" id="youqinglink" style="height:75px;">
-                <ul>
-                    <li id="title_index">友情链接:</li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                    <li><a href="#">美食网</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- 友情链接结束-->
+@yield('flink')
 
         <div class="foot">
             <ul>
